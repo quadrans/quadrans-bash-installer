@@ -9,7 +9,7 @@
 ######################################################
 
 # Version
-version=1.0L
+version=1.0.1L
 
 # Architecture check
 arch=$(uname -m)
@@ -78,6 +78,7 @@ Please install systemd and systemctl on your computer than relaunch this install
                     printf "\e[1mQuadrans Node installation in progress...\e[0m
 Node user creation in progress... "
                     useradd -r -m quadrans
+                    chown -R quadrans:quadrans /home/quadrans
                     printf "\e[32mdone \n\n\e[0m"
                 fi
 
@@ -99,19 +100,19 @@ Node user creation in progress... "
 
                         if [ "$arch" == 'x86_64' ]; then
                             printf "x86_64 found\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
                         elif [ "$arch" == 'x86_32' ]; then
                             printf "x86 found\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
                         elif [ "$arch" == 'aarch64' ]; then
                             printf "ARM64 found\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
 
                         elif [[ "$arch" == 'armv7'* ]]; then
                             printf "ARMv7 found\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
 
                         else
                             printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -219,19 +220,19 @@ If you leave it empty the wallet creation will be skipped\n\n"
 
                         if [ "$arch" == 'x86_64' ]; then
                             printf "x86_64 found\n\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
                         elif [ "$arch" == 'x86_32' ]; then
                             printf "x86 found\n\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
                         elif [ "$arch" == 'aarch64' ]; then
                             printf "ARM64 found\n\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm64/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm64/gqdc
 
                         elif [[ "$arch" == 'armv7'* ]]; then
                             printf "ARMv7 found\n\n"
-                            wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
+                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
 
                         else
                             printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -369,19 +370,19 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
 
                     if [ "$arch" == 'x86_64' ]; then
                         printf "x86_64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
                     elif [ "$arch" == 'x86_32' ]; then
                         printf "x86 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
                     elif [ "$arch" == 'aarch64' ]; then
                         printf "ARM64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
 
                     elif [[ "$arch" == 'armv7'* ]]; then
                         printf "ARMv7 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
 
                     else
                         printf "Unsupported processor found, you cannot update a Quadrans node on this machine\n"
@@ -412,19 +413,19 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
 
                     if [ "$arch" == 'x86_64' ]; then
                         printf "x86_64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
                     elif [ "$arch" == 'x86_32' ]; then
                         printf "x86 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
                     elif [ "$arch" == 'aarch64' ]; then
                         printf "ARM64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/arm/arm64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/arm/arm64/gqdc
 
                     elif [[ "$arch" == 'armv7'* ]]; then
                         printf "ARMv7 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
 
                     else
                         printf "Unsupported processor found, you cannot update a Quadrans node on this machine\n"
@@ -716,19 +717,19 @@ Node user creation in progress... "
 
             if [ "$arch" == 'x86_64' ]; then
                 printf "x86_64 found\n"
-                wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
+                wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
             elif [ "$arch" == 'x86_32' ]; then
                 printf "x86 found\n"
-                wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
+                wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
             elif [ "$arch" == 'aarch64' ]; then
                 printf "ARM64 found\n"
-                wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
+                wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
 
             elif [[ "$arch" == 'armv7'* ]]; then
                 printf "ARMv7 found\n"
-                wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
+                wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
 
             else
                 printf "Unsupported processor found, you cannot update a Quadrans node on this machine\n"
@@ -920,19 +921,19 @@ If you leave it empty the wallet creation will be skipped\n\n"
 
                     if [ "$arch" == 'x86_64' ]; then
                         printf "x86_64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
                     elif [ "$arch" == 'x86_32' ]; then
                         printf "x86 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
                     elif [ "$arch" == 'aarch64' ]; then
                         printf "ARM64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm64/gqdc
 
                     elif [[ "$arch" == 'armv7'* ]]; then
                         printf "ARMv7 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
 
                     else
                         printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -1025,19 +1026,19 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
 
                     if [ "$arch" == 'x86_64' ]; then
                         printf "x86_64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
                     elif [ "$arch" == 'x86_32' ]; then
                         printf "x86 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
                     elif [ "$arch" == 'aarch64' ]; then
                         printf "ARM64 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
 
                     elif [[ "$arch" == 'armv7'* ]]; then
                         printf "ARMv7 found\n"
-                        wget -q --show-progress -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
+                        wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
 
                     else
                         printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
