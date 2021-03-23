@@ -17,8 +17,17 @@ With this installer you can:
 
 ## Usage
 
+**On Linux:**
+
 ```bash
 wget http://repo.quadrans.io/installer/gqdc-installer.sh
+sudo bash gqdc-installer.sh
+```
+
+**On Mac:**
+
+```bash
+curl -s http://repo.quadrans.io/installer/gqdc-installer.sh > gqdc-installer.sh
 sudo bash gqdc-installer.sh
 ```
 
