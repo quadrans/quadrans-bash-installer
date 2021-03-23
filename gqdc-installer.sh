@@ -20,7 +20,7 @@
 # it's due. Thanks!                                  #
 ######################################################
 
-version=1.0
+version=1.1
 
 # Parse arguments
 while true; do
@@ -74,7 +74,7 @@ echo '
 
 # Internet connection check
 printf "\e[1mConnection test... \e[0m"
-if curl -s --head --request GET www.google.com | grep "200 OK" >/dev/null; then
+if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
   printf "\e[32mpassed \n\e[0m"
 
   # Operating system check
@@ -89,9 +89,8 @@ if curl -s --head --request GET www.google.com | grep "200 OK" >/dev/null; then
     rm gqdc-installer-linux.sh*
 
   elif [ "$opsys" == 'Darwin' ]; then
-
-    wget -q http://repo.quadrans.io/installer/service/gqdc-installer-mac.sh
-    chmod +x gqdc-installer-linux.sh
+    curl -s http://repo.quadrans.io/installer/service/gqdc-installer-mac.sh > gqdc-installer-mac.sh
+    chmod +x gqdc-installer-mac.sh
     ./gqdc-installer-mac.sh 2>&1 | tee -a /var/log/gqdc-installer.log
     rm gqdc-installer-mac.sh*
 
