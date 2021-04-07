@@ -20,7 +20,7 @@
 # it's due. Thanks!                                  #
 ######################################################
 
-version=1.1
+version=1.2
 
 # Parse arguments
 while true; do
@@ -71,38 +71,47 @@ echo '
 | |_| | |_| | (_| | (_| | | | (_| | | | \__ \ | |\  | (_) | (_| |  __/
  \__\_\\__,_|\__,_|\__,_|_|  \__,_|_| |_|___/ |_| \_|\___/ \__,_|\___|
 '
+# Operating system check
+opsys=$(uname)
 
-# Internet connection check
-printf "\e[1mConnection test... \e[0m"
-if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-  printf "\e[32mpassed \n\e[0m"
+if [ "$opsys" == 'Linux' ]; then
+  # Internet connection check
+  printf "\e[1mConnection test... \e[0m"
+  wget -q --spider http://www.google.com
+  if [ $? -eq 0 ]; then
+    printf "\e[32mpassed \n\e[0m"
 
-  # Operating system check
-  opsys=$(uname)
-
-  if [ "$opsys" == 'Linux' ]; then
     printf "\e[1mDownloading latest installer... \e[0m"
     wget -q http://repo.quadrans.io/installer/service/gqdc-installer-linux.sh
     printf "\e[32mdone \n\e[0m"
     chmod +x gqdc-installer-linux.sh
     ./gqdc-installer-linux.sh 2>&1 | tee -a /var/log/gqdc-installer.log
     rm gqdc-installer-linux.sh*
+  else
+    printf "\e[31moffline.\e[0m\nQuadrans Node installation aborted for no Internet connection.\n"
+    echo ""
+    exit 1
+  fi
 
-  elif [ "$opsys" == 'Darwin' ]; then
+elif [ "$opsys" == 'Darwin' ]; then
+  # Internet connection check
+  printf "\e[1mConnection test... \e[0m"
+  if curl -s --head --request GET www.google.com | grep "200 OK" >/dev/null; then
+    printf "\e[32mpassed \n\e[0m"
     curl -s http://repo.quadrans.io/installer/service/gqdc-installer-mac.sh > gqdc-installer-mac.sh
     chmod +x gqdc-installer-mac.sh
     ./gqdc-installer-mac.sh 2>&1 | tee -a /var/log/gqdc-installer.log
     rm gqdc-installer-mac.sh*
-
   else
-    printf "Unsupported operating system, you cannot install a Quadrans node on this machine\n"
+    printf "\e[31moffline.\e[0m\nQuadrans Node installation aborted for no Internet connection.\n"
+    echo ""
     exit 1
-
   fi
 
 else
-  printf "\e[31moffline.\e[0m\nQuadrans Node installation aborted for no Internet connection.\n"
-  echo ""
+  printf "Unsupported operating system, you cannot install a Quadrans node on this machine\n"
+  exit 1
+
 fi
 
 echo ""
