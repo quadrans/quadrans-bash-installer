@@ -77,7 +77,11 @@ opsys=$(uname)
 if [ "$opsys" == 'Linux' ]; then
   # Internet connection check
   printf "\e[1mConnection test... \e[0m"
+<<<<<<< HEAD
   wget -q --spider http://www.google.com
+=======
+  wget -q --spider http://google.com
+>>>>>>> c8961012c50352ced8c458ef425ba0474d71b210
   if [ $? -eq 0 ]; then
     printf "\e[32mpassed \n\e[0m"
 
