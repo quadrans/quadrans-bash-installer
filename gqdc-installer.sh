@@ -20,7 +20,7 @@
 # it's due. Thanks!                                  #
 ######################################################
 
-version=1.2
+version=1.3
 
 # Parse arguments
 while true; do
@@ -80,7 +80,7 @@ if [ "$opsys" == 'Linux' ]; then
   wget -q --spider http://www.google.com
   if [ $? -eq 0 ]; then
     printf "\e[32mpassed \n\e[0m"
-
+    rm -f gqdc-installer-linux.sh* # Remove old abandoned installer
     printf "\e[1mDownloading latest installer... \e[0m"
     wget -q http://repo.quadrans.io/installer/service/gqdc-installer-linux.sh
     printf "\e[32mdone \n\e[0m"
@@ -98,7 +98,10 @@ elif [ "$opsys" == 'Darwin' ]; then
   printf "\e[1mConnection test... \e[0m"
   if curl -s --head --request GET www.google.com | grep "200 OK" >/dev/null; then
     printf "\e[32mpassed \n\e[0m"
+    rm -f gqdc-installer-mac.sh* # Remove old abandoned installer
+printf "\e[1mDownloading latest installer... \e[0m"
     curl -s http://repo.quadrans.io/installer/service/gqdc-installer-mac.sh > gqdc-installer-mac.sh
+    printf "\e[32mdone \n\e[0m"
     chmod +x gqdc-installer-mac.sh
     ./gqdc-installer-mac.sh 2>&1 | tee -a /var/log/gqdc-installer.log
     rm gqdc-installer-mac.sh*
