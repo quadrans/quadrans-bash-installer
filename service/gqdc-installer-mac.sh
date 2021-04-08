@@ -10,7 +10,7 @@
 ######################################################
 
 # Version
-version=1.0M
+version=1.1M
 
 # Architecture check
 arch=$(uname -m)
@@ -141,7 +141,7 @@ Please visit Quadrans Documentation for other information: https://docs.quadrans
                         read -p "Enter the name of your node: " nodename
                         if [ "$nodename" != "" ]; then
                             echo "export NODE_LISTED=true" >>$environmentfile
-                            echo "export NODE_NAME=\\"$nodename\\"" >>$environmentfile
+                            echo "export NODE_NAME=\"$nodename\"" >> $environmentfile
 
                             # Node wallet password
                             printf "\n\e[1mCreate a new Quadrans Wallet and enable mining\e[0m
@@ -152,7 +152,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                             read -p 'Type your new wallet password (empty to skip): ' nodepassword
                             if [ "$nodepassword" != "" ]; then
                                 echo $nodepassword >>$passwordfile
-                                WALLET_ADDR=$(/usr/local/bin/gqdc account new --datadir /Users/Shared/Quadrans/.quadrans --password /Users/Shared/Quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2)
+                                WALLET_ADDR=$(/usr/local/bin/gqdc account new --datadir /Users/Shared/Quadrans/.quadrans --password /Users/Shared/Quadrans/password.txt | grep -o -e {[A-Za-z0-9]*} | sed 's/^.//;s/.$//')
                                 echo "export MINER_OPTIONS=true" >>$environmentfile
                                 echo "export MINER_WALLET=\"0x$WALLET_ADDR\"" >>$environmentfile
                                 echo "export MINER_PASSWORD=/Users/Shared/Quadrans/password.txt" >>$environmentfile
@@ -247,7 +247,7 @@ Please visit Quadrans Documentation for other information: https://docs.quadrans
                         read -p "Enter the name of your node: " nodename
                         if [ "$nodename" != "" ]; then
                             echo "export NODE_LISTED=true" >>$environmentfile
-                            echo "export NODE_NAME=\\"$nodename\\"" >>$environmentfile
+                            echo "export NODE_NAME=\"$nodename\"" >>$environmentfile
                         fi
 
                         printf "\e[1mQuadrans node configuration\e[0m \e[32m...done \e[0m\n"
@@ -701,7 +701,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         read -p 'Type your new wallet password (empty to skip): ' nodepassword
                         if [ "$nodepassword" != "" ]; then
                             echo $nodepassword >>$passwordfile
-                            WALLET_ADDR=$(/usr/local/bin/gqdc account new --datadir /Users/Shared/Quadrans/.quadrans --password /Users/Shared/Quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2)
+                            WALLET_ADDR=$(/usr/local/bin/gqdc account new --datadir /Users/Shared/Quadrans/.quadrans --password /Users/Shared/Quadrans/password.txt | grep -o -e {[A-Za-z0-9]*} | sed 's/^.//;s/.$//')
                             echo "export MINER_OPTIONS=true" >>$environmentfile
                             echo "export MINER_WALLET=\"0x$WALLET_ADDR\"" >>$environmentfile
                             echo "export MINER_PASSWORD=/Users/Shared/Quadrans/password.txt" >>$environmentfile
