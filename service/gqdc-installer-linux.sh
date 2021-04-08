@@ -9,7 +9,7 @@
 ######################################################
 
 # Version
-version=1.0.1L
+version=1.1.1L
 
 # Architecture check
 arch=$(uname -m)
@@ -191,7 +191,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                             read -p 'Type your new wallet password (empty to skip): ' nodepassword
                             if [ "$nodepassword" != "" ]; then
                                 echo $nodepassword >>$passwordfile
-                                WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2")
+                                WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | sed 's/^.//;s/.$//'")
                                 su quadrans -c "echo \"export MINER_OPTIONS=true\" >> $environmentfile"
                                 su quadrans -c "echo \"export MINER_WALLET=\"0x$WALLET_ADDR\"\" >> $environmentfile"
                                 su quadrans -c "echo \"export MINER_PASSWORD=/home/quadrans/password.txt\" >> $environmentfile"
@@ -804,7 +804,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         read -p 'Type your new wallet password (empty to skip): ' nodepassword
                         if [ "$nodepassword" != "" ]; then
                             echo $nodepassword >>$passwordfile
-                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2")
+                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | sed 's/^.//;s/.$//'")
                             su quadrans -c "echo \"export MINER_OPTIONS=true\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_WALLET=\"0x$WALLET_ADDR\"\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_PASSWORD=/home/quadrans/password.txt\" >> $environmentfile"
@@ -1117,7 +1117,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         read -p 'Type your new wallet password (empty to skip): ' nodepassword
                         if [ "$nodepassword" != "" ]; then
                             echo $nodepassword >>$passwordfile
-                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2")
+                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | sed 's/^.//;s/.$//'")
                             su quadrans -c "echo \"export MINER_OPTIONS=true\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_WALLET=\"0x$WALLET_ADDR\"\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_PASSWORD=/home/quadrans/password.txt\" >> $environmentfile"
