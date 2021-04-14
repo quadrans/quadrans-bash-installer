@@ -9,7 +9,7 @@
 ######################################################
 
 # Version
-version=1.1.1L
+version=1.1.3L
 
 # Architecture check
 arch=$(uname -m)
@@ -100,19 +100,19 @@ Node user creation in progress... "
 
                         if [ "$arch" == 'x86_64' ]; then
                             printf "x86_64 found\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
                         elif [ "$arch" == 'x86_32' ]; then
                             printf "x86 found\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
                         elif [ "$arch" == 'aarch64' ]; then
                             printf "ARM64 found\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm64/gqdc
 
                         elif [[ "$arch" == 'armv7'* ]]; then
                             printf "ARMv7 found\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/arm/arm7/gqdc
 
                         else
                             printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -191,7 +191,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                             read -p 'Type your new wallet password (empty to skip): ' nodepassword
                             if [ "$nodepassword" != "" ]; then
                                 echo $nodepassword >>$passwordfile
-                                WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | sed 's/^.//;s/.$//'")
+                                WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2")
                                 su quadrans -c "echo \"export MINER_OPTIONS=true\" >> $environmentfile"
                                 su quadrans -c "echo \"export MINER_WALLET=\"0x$WALLET_ADDR\"\" >> $environmentfile"
                                 su quadrans -c "echo \"export MINER_PASSWORD=/home/quadrans/password.txt\" >> $environmentfile"
@@ -220,19 +220,19 @@ If you leave it empty the wallet creation will be skipped\n\n"
 
                         if [ "$arch" == 'x86_64' ]; then
                             printf "x86_64 found\n\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
                         elif [ "$arch" == 'x86_32' ]; then
                             printf "x86 found\n\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
                         elif [ "$arch" == 'aarch64' ]; then
                             printf "ARM64 found\n\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm64/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm64/gqdc
 
                         elif [[ "$arch" == 'armv7'* ]]; then
                             printf "ARMv7 found\n\n"
-                            wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
+                            mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/arm/arm7/gqdc
 
                         else
                             printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -362,7 +362,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
 
                 if [ -f /usr/local/bin/gqdc ]; then
                     echo "Quadrans Node for Mainnet found. Update in progress..."
-
+                    service_status="$(systemctl show -p SubState --value quadrans-node)"
                     systemctl stop quadrans-node
 
                     # Architecture check and binary download
@@ -394,7 +394,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
                     printf "\n\e[1mGo Quadrans binary\e[0m \e[32m...updated \e[0m\n"
 
                     # Quadrans Node Service check
-                    service_status="$(systemctl show -p SubState --value quadrans-node)"
+
                     if [ "${service_status}" = "running" ]; then
                         # Start the node and enable the service
                         systemctl restart quadrans-node
@@ -406,6 +406,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
                     [ -f /usr/local/bin/gqdc-testnet ]
                 then
                     echo "Quadrans Node for Testnet found. Update in progress..."
+                    service_status_testnet="$(systemctl show -p SubState --value quadrans-node-testnet)"
                     systemctl stop quadrans-node-testnet
 
                     # Architecture check and binary download
@@ -437,8 +438,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
                     printf "\n\e[1mGo Quadrans Testnet binary\e[0m \e[32m...updated \e[0m\n"
 
                     # Quadrans Node Testnet Service check
-                    service_status="$(systemctl show -p SubState --value quadrans-node-testnet)"
-                    if [ "${service_status}" = "running" ]; then
+                    if [ "${service_status_testnet}" = "running" ]; then
                         # Start the node and enable the service
                         systemctl restart quadrans-node-testnet
                         printf "\e[1mGo Quadrans Testnet service\e[0m \e[32m...restarted \e[0m\n "
@@ -804,7 +804,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         read -p 'Type your new wallet password (empty to skip): ' nodepassword
                         if [ "$nodepassword" != "" ]; then
                             echo $nodepassword >>$passwordfile
-                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | sed 's/^.//;s/.$//'")
+                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2")
                             su quadrans -c "echo \"export MINER_OPTIONS=true\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_WALLET=\"0x$WALLET_ADDR\"\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_PASSWORD=/home/quadrans/password.txt\" >> $environmentfile"
@@ -1117,7 +1117,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         read -p 'Type your new wallet password (empty to skip): ' nodepassword
                         if [ "$nodepassword" != "" ]; then
                             echo $nodepassword >>$passwordfile
-                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | sed 's/^.//;s/.$//'")
+                            WALLET_ADDR=$(su quadrans -c "/usr/local/bin/gqdc account new --datadir /home/quadrans/.quadrans --password /home/quadrans/password.txt | grep -o -e \"\{[A-Za-z0-9]*\}\" | tail -c +2 | head -c -2")
                             su quadrans -c "echo \"export MINER_OPTIONS=true\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_WALLET=\"0x$WALLET_ADDR\"\" >> $environmentfile"
                             su quadrans -c "echo \"export MINER_PASSWORD=/home/quadrans/password.txt\" >> $environmentfile"
