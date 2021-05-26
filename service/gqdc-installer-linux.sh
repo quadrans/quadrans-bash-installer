@@ -9,7 +9,7 @@
 ######################################################
 
 # Version
-version=1.1.3L
+version=1.2L
 
 # Architecture check
 arch=$(uname -m)
@@ -699,10 +699,11 @@ Your old Testnet node configuration file is located in:
 
             # Quadrans user check
             if getent passwd quadrans >/dev/null; then
-                printf "quadrans user \e[31malready exists.\e[0m
-Do you have a Quadrans Node installed on this computer?
-\e[31mInstallation aborted.\e[0m\n"
-                exit 1
+                service_status="$(systemctl show -p SubState --value quadrans-node)"
+                    if [ "${service_status}" = "running" ]; then
+                        printf "Do you have a Quadrans Node installed on this computer?\n\e[31mInstallation aborted.\e[0m\n"
+                        exit 1
+                    fi
             else
                 # Quadrans user creation and folder permission restore
                 printf "\e[1mQuadrans Node configuration in progress...\e[0m
