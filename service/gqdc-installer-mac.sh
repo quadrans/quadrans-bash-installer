@@ -10,7 +10,7 @@
 ######################################################
 
 # Version
-version=1.1M
+version=1.2M
 
 # Architecture check
 arch=$(uname -m)
@@ -101,7 +101,7 @@ if [ $(grep -c "NODE_LISTED=true" /Users/Shared/Quadrans/environment ) -eq 1 ]; 
     STATS_OPTS=$(printf "%sethstats \"%s\":\"QuadransStatsNetwork\"@status.quadrans.io:3000" "--" "${NODE_NAME}")
 fi
 
-eval "/usr/local/bin/gqdc ${GETH_PARAMS} ${MINER_OPTS} ${STATS_OPTS} --datadir /Users/Shared/Quadrans/.quadrans"
+eval "/usr/local/bin/gqdc ${GETH_PARAMS} ${MINER_OPTS} ${STATS_OPTS} --datadir=\"/Users/Shared/Quadrans/.quadrans\""
 EOF
                         chmod +x /Users/Shared/Quadrans/gqdc.sh
 
@@ -207,7 +207,7 @@ if [ $(grep -c "NODE_LISTED=true" /Users/Shared/Quadrans/environment ) -eq 1 ]; 
     STATS_OPTS=$(printf "%sethstats \"%s\":\"QuadransStatsNetwork\"@status.testnet.quadrans.io:3000" "--" "${NODE_NAME}")
 fi
 
-eval "/usr/local/bin/gqdc-testnet --testnet --rpc --rpcapi=\"personal,net,web3,admin,debug,clique,eth\" --rpccorsdomain \"*\" --rpcaddr \"127.0.0.1\" --allow-insecure-unlock ${STATS_OPTS}"
+eval "/usr/local/bin/gqdc-testnet --testnet --rpc --rpcapi=\"personal,net,web3,admin,debug,clique,eth\" --rpccorsdomain \"*\" --rpcaddr \"127.0.0.1\" --allow-insecure-unlock ${STATS_OPTS} --datadir=\"/Users/Shared/Quadrans/.quadrans\""
 EOF
                         chmod +x /Users/Shared/Quadrans/gqdc-testnet.sh
 
@@ -654,7 +654,7 @@ if [ $(grep -c "NODE_LISTED=true" /Users/Shared/Quadrans/environment ) -eq 1 ]; 
     STATS_OPTS=$(printf "%sethstats \"%s\":\"QuadransStatsNetwork\"@status.quadrans.io:3000" "--" "${NODE_NAME}")
 fi
 
-eval "/usr/local/bin/gqdc ${GETH_PARAMS} ${MINER_OPTS} ${STATS_OPTS}"
+eval "/usr/local/bin/gqdc ${GETH_PARAMS} ${MINER_OPTS} ${STATS_OPTS} --datadir=\"/Users/Shared/Quadrans/.quadrans\""
 EOF
             chmod +x /Users/Shared/Quadrans/gqdc.sh
 
