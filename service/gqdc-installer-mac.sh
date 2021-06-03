@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ######################################################
 #        Go Quadrans bash installer for Mac          #
 #       Script created by Piersandro Guerrera        #

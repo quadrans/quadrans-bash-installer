@@ -9,7 +9,7 @@
 ######################################################
 
 # Version
-version=1.2L
+version=1.3L
 
 # Architecture check
 arch=$(uname -m)
@@ -102,7 +102,7 @@ Node user creation in progress... "
                             printf "x86_64 found\n"
                             mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
-                        elif [ "$arch" == 'x86_32' ]; then
+                        elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                             printf "x86 found\n"
                             mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
@@ -222,7 +222,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                             printf "x86_64 found\n\n"
                             mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
-                        elif [ "$arch" == 'x86_32' ]; then
+                        elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                             printf "x86 found\n\n"
                             mkdir -p /usr/local/bin/ && wget -q --show-progress --progress=bar:force:noscroll -x -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
@@ -372,7 +372,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
                         printf "x86_64 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
-                    elif [ "$arch" == 'x86_32' ]; then
+                    elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                         printf "x86 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
@@ -416,7 +416,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
                         printf "x86_64 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
-                    elif [ "$arch" == 'x86_32' ]; then
+                    elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                         printf "x86 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
@@ -720,7 +720,7 @@ Node user creation in progress... "
                 printf "x86_64 found\n"
                 wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
-            elif [ "$arch" == 'x86_32' ]; then
+            elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                 printf "x86 found\n"
                 wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
@@ -924,7 +924,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         printf "x86_64 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/amd64/gqdc
 
-                    elif [ "$arch" == 'x86_32' ]; then
+                    elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                         printf "x86 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc-testnet http://repo.quadrans.io/linux/test/i386/gqdc
 
@@ -1029,7 +1029,7 @@ The name will appear in Quadrans Network Testnet Status page.\n\n"
                         printf "x86_64 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/amd64/gqdc
 
-                    elif [ "$arch" == 'x86_32' ]; then
+                    elif [ "$arch" == 'x86_32' ] || [ "$arch" == 'i686' ]; then
                         printf "x86 found\n"
                         wget -q --show-progress --progress=bar:force:noscroll -O /usr/local/bin/gqdc http://repo.quadrans.io/linux/i386/gqdc
 
