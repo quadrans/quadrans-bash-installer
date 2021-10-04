@@ -71,7 +71,7 @@ Please use \"Change Network\" option"
                         if [ "$arch" == 'x86_64' ]; then
                             printf "x86_64 found\n"
                             mkdir -p /usr/local/bin
-                            curl -# http://repo.quadrans.io/macos/intel64/gqdc -o /usr/local/bin/gqdc
+                            curl -# https://repo.quadrans.io/macos/intel64/gqdc -o /usr/local/bin/gqdc
 
                         else
                             printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -182,7 +182,7 @@ If you leave it empty the wallet creation will be skipped\n\n"
                         if [ "$arch" == 'x86_64' ]; then
                             printf "x86_64 found\n"
                             mkdir -p /usr/local/bin
-                            curl -# http://repo.quadrans.io/macos/test/intel64/gqdc -o /usr/local/bin/gqdc-testnet
+                            curl -# https://repo.quadrans.io/macos/test/intel64/gqdc -o /usr/local/bin/gqdc-testnet
 
                         else
                             printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -323,7 +323,7 @@ Please visit Quadrans Documentation for other information: https://docs.quadrans
 
                     if [ "$arch" == 'x86_64' ]; then
                         printf "x86_64 found\n"
-                        curl -# http://repo.quadrans.io/macos/intel64/gqdc -o /usr/local/bin/gqdc
+                        curl -# https://repo.quadrans.io/macos/intel64/gqdc -o /usr/local/bin/gqdc
 
                     else
                         printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -354,7 +354,7 @@ Please visit Quadrans Documentation for other information: https://docs.quadrans
 
                     if [ "$arch" == 'x86_64' ]; then
                         printf "x86_64 found\n"
-                        curl -# http://repo.quadrans.io/macos/intel64/gqdc-testnet -o /usr/local/bin/gqdc-testnet
+                        curl -# https://repo.quadrans.io/macos/intel64/gqdc-testnet -o /usr/local/bin/gqdc-testnet
 
                     else
                         printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
@@ -624,7 +624,7 @@ Your old Testnet node configuration file is located in:
             if [ "$arch" == 'x86_64' ]; then
                 printf "x86_64 found\n"
                 mkdir -p /usr/local/bin
-                curl -# http://repo.quadrans.io/macos/intel64/gqdc -o /usr/local/bin/gqdc
+                curl -# https://repo.quadrans.io/macos/intel64/gqdc -o /usr/local/bin/gqdc
 
             else
                 printf "Unsupported processor found, you cannot install a Quadrans node on this machine\n"
