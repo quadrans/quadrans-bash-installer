@@ -29,7 +29,7 @@ echo With easy steps it will download the node on your PC, create a wallet and e
 echo:
 set /p Q="Press Enter key to continue or CTRL+C to abort the installation." 
 echo:
-echo As first step, this script will download "gqdc.exe" on %USERPROFILE%\QuadransNode folder
+echo As first step, this script will download "gqdc.exe" on %USERPROFILE% folder
 echo inside a new "QuadransNode" directory.
 mkdir %USERPROFILE%\QuadransNode
 cd %USERPROFILE%\QuadransNode
