@@ -53,4 +53,4 @@ set /p NODE_WALLET="Wallet Address: "
 echo gqdc --mine --unlock 0x%NODE_WALLET%  --password password.txt --ethstats "%NODE_NAME%":QuadransStatsNetwork@status.quadrans.io:3000 --datadir . > gqdc-launcher.bat
 echo: 
 echo Quadrans Node Installation completed.
-echo To run your node go on %USERPROFILE% folder and execute gqdc-launcher.bat file.
+echo Open Windows Explorer, go on %USERPROFILE% folder and double click on gqdc-launcher.bat file.
