@@ -57,5 +57,5 @@ Follow the on screen instructions.
 [GNU GPL 3](LICENSE)
 
 ## Links
-* [Quadrans Foundation website](https://quadrans.io)
+* [Quadrans Blockchain website](https://quadrans.io)
 * [Quadrans Documentation](https://docs.quadrans.io)
