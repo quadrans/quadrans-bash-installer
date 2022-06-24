@@ -7,6 +7,7 @@
 ## Quadrans Bash Installer (and Batch Installer)
 
 `gqdc-installer.sh` is a command line tools that allows to install the **Go Quadrans node binary** for **Linux** (x86, x86-64, armv7, arm64) and **macOS** (x86-64).
+
 `gqdc-winstaller.bat` is a command line tools that allows to create a **Launcher** for the **Go Quadrans node binary** for **Windows** (x86-64).
 
 With `gqdc-installer.sh` you can:
