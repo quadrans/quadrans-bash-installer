@@ -22,7 +22,7 @@ echo ^| ^| ^| ^| ^| ^| ^|/ _` ^|/ _` ^| `__/ _` ^| `_ \/ __^| ^|  \^| ^|/ _ \ / 
 echo ^| ^|_^| ^| ^|_^| ^| (_^| ^| (_^| ^| ^| ^| (_^| ^| ^| ^| \__ \ ^| ^|\  ^| (_) ^| (_^| ^|  __/
 echo  \__\_\\__,_^|\__,_^|\__,_^|_^|  \__,_^|_^| ^|_^|___/ ^|_^| \_^|\___/ \__,_^|\___^|
 echo:
-echo Welcome to Quadrans Node Installer v. 0.2 for Windows
+echo Welcome to Quadrans Node Installer v. 0.3 for Windows
 echo:
 echo This is a simple tool that allows to install a Go Quadrans binary for Windows.
 echo With easy steps it will download the node on your PC, create a wallet and enable mining.
@@ -62,4 +62,4 @@ echo - Name: %NODE_NAME%
 echo - QDC wallet: 0x%NODE_WALLET%
 echo: 
 echo Open Windows Explorer, go on %USERPROFILE%\QuadransNode folder and double click on gqdc-launcher.bat file to execute your Quadrans Node.
-echo If requested by your Firewall please Allow qgdc.exe to connect to the Internet.
+echo If requested by your Firewall please Allow gqdc.exe to connect to the Internet.

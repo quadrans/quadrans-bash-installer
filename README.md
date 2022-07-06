@@ -44,11 +44,18 @@ sudo bash gqdc-installer.sh
 
 **On Windows:**
 
-Open a Command Prompt or PowerShell and execute:
+Open a Command Prompt and execute:
 
 ```bash
 curl -s https://repo.quadrans.io/installer/gqdc-winstaller.bat -o gqdc-winstaller.bat
 gqdc-winstaller.bat
+```
+
+or open a PowerShell and execute:
+
+```bash
+Invoke-WebRequest -Uri https://repo.quadrans.io/installer/gqdc-winstaller.bat -OutFile gqdc-installer.bat 
+.\gqdc-winstaller.bat
 ```
 
 Follow the on screen instructions.
