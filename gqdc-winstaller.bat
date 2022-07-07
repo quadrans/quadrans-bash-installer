@@ -22,7 +22,7 @@ echo ^| ^| ^| ^| ^| ^| ^|/ _` ^|/ _` ^| `__/ _` ^| `_ \/ __^| ^|  \^| ^|/ _ \ / 
 echo ^| ^|_^| ^| ^|_^| ^| (_^| ^| (_^| ^| ^| ^| (_^| ^| ^| ^| \__ \ ^| ^|\  ^| (_) ^| (_^| ^|  __/
 echo  \__\_\\__,_^|\__,_^|\__,_^|_^|  \__,_^|_^| ^|_^|___/ ^|_^| \_^|\___/ \__,_^|\___^|
 echo:
-echo Welcome to Quadrans Node Installer v. 0.3 for Windows
+echo Welcome to Quadrans Node Installer v. 0.4 for Windows
 echo:
 echo This is a simple tool that allows to install a Go Quadrans binary for Windows.
 echo With easy steps it will download the node on your PC, create a wallet and enable mining.
@@ -42,7 +42,7 @@ set /p NODE_NAME="Node Name: "
 echo:
 echo Choose a random password to create your Quadrans Coin wallet on your node an press Enter.
 set /p PASSWORD="Password: "
-echo %PASSWORD% > password.txt
+echo %PASSWORD%>password.txt
 echo: 
 echo Quadrans Node wallet creation
 gqdc account new --password password.txt --datadir .
