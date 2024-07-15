@@ -14,7 +14,7 @@
 ::          piersandro.guerrera@quadrans.io
 ::
 :: Feel free to modify, but please give credit where it's due. Thanks!
-set "VERSION=0.5"
+set "VERSION=0.6"
 echo:
 echo   ___                  _                       _   _           _      
 echo  / _ \ _   _  __ _  __^| ^|_ __ __ _ _ __  ___  ^| \ ^| ^| ___   __^| ^| ___ 
@@ -70,4 +70,7 @@ echo:
 echo Open Windows Explorer, go on %USERPROFILE%\QuadransNode folder and double click on gqdc-launcher.bat file
 echo to execute your Quadrans Node.
 echo If requested by your Firewall please Allow gqdc.exe to connect to the Internet.
+echo:
+echo Please remember to backup you password.txt file and the UTC... file located in the keystore folder of your
+echo %USERPROFILE%\QuadransNode folder.
 endlocal
