@@ -9,7 +9,7 @@
 ######################################################
 
 # Version
-version=1.4L
+version=1.5L
 
 # Architecture check
 arch=$(uname -m)
@@ -253,7 +253,7 @@ if [ $(grep -c "NODE_LISTED=true" /home/quadrans/environment-testnet ) -eq 1 ]; 
     STATS_OPTS=$(printf "%sethstats \"%s\":\"QuadransStatsNetwork\"@status.testnet.quadrans.io:3000" "--" "${NODE_NAME}")
 fi
 
-eval "/usr/local/bin/gqdc-testnet --testnet --rpc --rpcapi=\"personal,net,web3,admin,debug,clique,eth\" --rpccorsdomain \"*\" --rpcaddr \"127.0.0.1\" --allow-insecure-unlock ${STATS_OPTS}"
+eval "/usr/local/bin/gqdc-testnet --testnet --http --http.api=\"personal,net,web3,admin,debug,clique,eth\" --http.corsdomain \"*\" --http.addr \"127.0.0.1\" --allow-insecure-unlock ${STATS_OPTS}"
 EOF
                         chown quadrans:quadrans /home/quadrans/gqdc-testnet.sh
                         chmod +x /home/quadrans/gqdc-testnet.sh
@@ -955,7 +955,7 @@ if [ $(grep -c "NODE_LISTED=true" /home/quadrans/environment-testnet ) -eq 1 ]; 
     STATS_OPTS=$(printf "%sethstats \"%s\":\"QuadransStatsNetwork\"@status.testnet.quadrans.io:3000" "--" "${NODE_NAME}")
 fi
 
-eval "/usr/local/bin/gqdc-testnet --testnet --rpc --rpcapi=\"personal,net,web3,admin,debug,clique,eth\" --rpccorsdomain \"*\" --rpcaddr \"127.0.0.1\" --allow-insecure-unlock ${STATS_OPTS}"
+eval "/usr/local/bin/gqdc-testnet --testnet --http --http.api=\"personal,net,web3,admin,debug,clique,eth\" --http.corsdomain \"*\" --http.addr \"127.0.0.1\" --allow-insecure-unlock ${STATS_OPTS}"
 EOF
                     chown quadrans:quadrans /home/quadrans/gqdc-testnet.sh
                     chmod +x /home/quadrans/gqdc-testnet.sh
